@@ -17,7 +17,7 @@ class Solution:
     Head = head
     length = 0
     while head != None:
-      length++
+      length += 1
       head = head.next
 
     # divide the list into two parts
