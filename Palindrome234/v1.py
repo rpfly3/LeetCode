@@ -9,38 +9,60 @@ class ListNode:
 
 class Solution:
   def isPalindrome(self, head):
+    # check if the list is empty
     if head == None:
       return True
+
+    # get the length of the list
     Head = head
-    HEAD = head
     length = 0
     while head != None:
+      length++
       head = head.next
-      length += 1
 
+    # divide the list into two parts
     if length % 2 == 0:
-      length = length / 2
-      Length = length / 2
+      begin2 = length // 2 + 1
     else:
-      length = length // 2 + 1
-      Length = length // 2
+      begin2 = length // 2 + 2
 
-    head = HEAD
-    LENGTH = Length
-    while length > 0:
-      length -= 1
+    # get the head of the second half list
+    head = Head 
+    for i in range(1, begin2-1):
       head = head.next
-    
-    while head != None:
-      while Length > 0:
-        Head = Head.next
-        Length -= 1
-      if Head.val != head.val:
-        return False
-      LENGTH -= 1
-      Length = LENGTH
-      head = head.next
-      Head = HEAD
 
-    return True
+    # reverse the second half list
+    temp1 = None
+    temp2 = None
+    for i in range(begin2, length):
+      temp2 = head.next
+      head.next = temp1
+      temp1 = head
+      head = temp2
+
+    # after the reverse temp1 is the actual head
+    head = temp1
+    # begin to check palindrome
+    H1 = head
+    H2 = Head
+    Result = True
+    for i in range(begin2, length):
+      if H1.val == H2.val:
+        H1 = H1.next
+        H2 = H2.next
+      else:
+        Result = False
+        break
+
+    # correct the order of the second half list
+    temp1 = None
+    temp2 = None
+    for i in range(begin2, length):
+      temp2 = head.next
+      head.next = temp1
+      temp1 = head
+      head = temp2
+
+    return Result
+
 
