@@ -12,3 +12,5 @@ class Solution:
 
 # Note that reversed() function return a strange object not a sequence
 # range(m, n) doesn't include n, from m to n-1
+# Another thing is that s.split() will return more empty strings than 
+# than expected when there are some continuous empty spaces in s
