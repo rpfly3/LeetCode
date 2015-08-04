@@ -34,3 +34,5 @@ class Solution:
           return INT_MAX
         else:
           return int(str[1:i])
+# Result: failed
+# Note that: there is no need to design an beautiful program for now !!! 
